@@ -8,6 +8,7 @@ import { useContext } from "react";
 import Messenger from "./pages/messenger/Messenger";
 
 
+
 function App() {
   const {user} = useContext(AuthContext)
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route exact path="/">
           {user ? <Home /> : <Register />}
         </Route>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+        <Route path="/login">{!user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
